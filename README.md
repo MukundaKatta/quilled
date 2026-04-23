@@ -1,22 +1,47 @@
 # Quilled
 
-> Your newsletter. Ghostwritten.
+Your newsletter. Ghostwritten. Tell us what happened this week — wake up tomorrow to a full issue, in your voice, ready to send.
 
-Tell us what happened this week. Wake up tomorrow to a full issue, in your voice, ready to send.
+**Status:** v0 skeleton — landing page + newsletter-generator preview route. Full AI not yet wired.
 
-## What you get
+**Landing:** https://quilled.vercel.app
 
-- **Voice note in, issue out** — A three-minute ramble turns into 800 words of publishable newsletter.
-- **Learns your voice** — Reads your past issues. Matches tone, cadence, the em-dash you love.
-- **Send to Substack or Beehiiv** — One click. The draft lands in your ESP, ready for your final read.
+---
 
-## Category
+## Stack
 
-Creator tools. Part of a 50-product exploration of high-demand consumer and SMB markets.
+| Layer | Choice |
+|---|---|
+| Framework | Next.js 15 (App Router) |
+| Language | TypeScript (strict) |
+| Styling | Tailwind v4 |
+| Fonts | Inter via `next/font/google` |
+| Hosting | Vercel (zero config) |
+| Waitlist | https://waitlist-api-sigma.vercel.app |
 
-## Status
+## Run locally
 
-Landing page live with interactive demo and functional waitlist.
+```bash
+pnpm install
+pnpm dev
+```
 
-- **Live:** https://mukundakatta.github.io/quilled/
-- **Waitlist API:** https://waitlist-api-sigma.vercel.app/api/waitlist
+Open http://localhost:3000.
+
+## Deploy
+
+Push to `main` — Vercel picks it up automatically. No environment variables required.
+
+## Routes
+
+| Route | Description |
+|---|---|
+| `/` | Landing page (original copy & design preserved) |
+| `/try` | v0 ghostwriter preview — enter 3 things from your week, get a mocked newsletter draft, copy to clipboard |
+| `/api/waitlist` | `POST { email }` — forwards to waitlist-api-sigma with `product: "quilled"` |
+
+## What's next
+
+- Wire real AI (voice-to-newsletter generation) behind `/try`
+- Substack / Beehiiv integration (one-click draft push)
+- Auth + voice style learning per user
